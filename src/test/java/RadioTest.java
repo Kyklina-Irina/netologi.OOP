@@ -85,6 +85,33 @@ class RadioTest {
         radio.decreaseVolume(); // текущий 0
         assertEquals(0, radio.getCurrentVolume());
     }
+    @Test
+    void shouldNotSetStationBelow0() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldNotSetStationAbove9() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldNotSetVolumeBelow0() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-10);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    void shouldNotSetVolumeAbove100() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(150);
+        assertEquals(0, radio.getCurrentVolume());
+    }
 
     // Доп.: проверка начального состояния
     @Test
